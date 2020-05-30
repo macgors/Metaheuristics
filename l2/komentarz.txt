@@ -1,0 +1,28 @@
+#Maciej Górski, 2444991
+
+Zad 1.
+Rozwiązanie zadania pierwszego to implementacja dosyć standardowego symulowanego wyżarzania. 
+Zaskakujące jest, że w testach mojej implementacji równie dobrze sprawdziła się wersja z zapamiętywaniem globalnie najlepszego stano i bez niego ( oznaczona w kodzie poprzez '#####').
+W książce "Essentials of Metaheuristics - A Set of Undergraduate Lecture Notes" proponują wersję z pamiętaniem tego stanu, a np. notatki Dr Liliana Bessona
+(https://perso.crans.org/besson/publis/notebooks/Simulated_annealing_in_Python.html) proponują wersję bez niego.
+Różnica może jednak występować dla niektórych problemów czy danych wejściowych. Jest to pewnego rodzaju "trade-off" między czasem
+(dodatkowy if w 'tight loop') na znalezienie optimum, a pewnością, że zwracamy najlepszy ze znalezionych wyników. Prawdopodobieństo, że przymjmiemy jakiś wynik gorszy od poprzedniego nawet bez zapamiętywania globalnie stanu
+jest jednak bardzo nieskie, dlatego nie ma większej różnicy w tym zadaniu.
+Znajdywanie rozwiazania w tym zadaniu są zaskakująco dobre i dla większości danych testowych, które wykorzystałem wartości funkcji w znaleziomym punkcie wynosi 0.0, a współrzędne punktu
+potrafią być nawet rzędu ok. e-320.
+
+
+Zad 2.
+Tutaj rozwiązaniem początkowym jest macierz wypełniona blokami kxk o kolejnych dostępnych kolorach, tj. pierwszy blok wypeniony zerami, drugi blok wypełniony 32-mi.
+Sąsiedzi generowani mogą być poprzez zmiane koloru losowego bloku i ew. losowe jego zespojenie z sąsiednim blokiem o tym samym kolorze lub losowym zmianie granicy o 1 między nim a blokiem o innym kolorze i przemalowaniu
+oddanego pola, bez popsucia poprawności rozwiązania.
+
+Zad 3.
+W zadaniu trzecim za rozwiązanie początkowe przyjąłem losowe błądzenie aż do wyjścia.
+Sąsiadem rozwiązania jest losowa inwersja 2 kroków w liście, obcięcie kroków które są wykonywane jeśli wcześniej po drodze weszliśmy do wyjście
+oraz usunięcie wszystkich 2 następujących bezpośrednio po sobie znoszących się kroków np. "'U', 'D'". W pierwotnej wersji nie miałem trzeciego podpunktu w generowaniu sąsiadów, co momentami
+prowadziło do rzadkiego, ale jednak odnajdywania ścieżek o długości rzedu kilkunastu tysięcy zamiast optymalnych 25 kroków.
+ Funkcja "fitnessu" przyjmuje wartość nieskończoność, jeśli nie udało się dotrzeć do końca i liczbę kroków, jeśli udało się dotrzeć do końca.
+
+
+ We wszystkich 3 zadaniach zmniejszam temperaturę w każdym kroku iteracji o procent lub promil, itd..

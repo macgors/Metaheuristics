@@ -1,0 +1,20 @@
+#Maciej Górski, 244991
+
+ZADANIE 1:
+W zadaniu pierwszym wykorzystałem algorytm Hill-Climbing z restartami o losowym interwale, jak opisane w książce
+"Essentials of Metaheuristics - A Set of Undergraduate Lecture Notes", Sean Luke, George Mason University. W testach ustaliłem
+ wartość sigma i przedział losowego timeoutu, tak że średnia wartość funkcji w odnalezionym minimum to a) ~0.02 b) 0.0.
+ Jak widać funkcja happy-cat bardziej opiera się optymalizacji i czasami dla krótkich czasów wywołania wartość w znalezionym minimum jest >1.
+
+ ZADANIE 2:
+ W tym zadaniu wykonuję wymagane przeszukiwanie Tabu. Początkowym rozwiązaniem jest wynik algorytmu zachłannego, który z wybierając następne
+ miasto, bierze to, które było nieodwiedzone i do którego ma nabliżej. Sąsiadem ścieżki jest są wszystkie ścieżki stworzone przez inwersję dwóch elementów.
+ Listą tabu jest lista wszystkich ścieżek, które już sprawdziłem.  Funkcją "fitness" jest koszt cyklu.
+ Jeśli po ustalonej wcześniej liczbie iteracji, nie znalazłem rozwiazania, które dawałoby jakąkolwiek porpawę, to następnym sąsiadem jest jeden poprawny losowy spacer komiwojażera po miastach.
+ Tym samym rozpoczynam "nowe" przesukiwanie z losowym rozwiązaniem początkowym. Dzięki tej poprawce wynik dla pierszych danych testowych to 66, a dla drugich to 277.
+
+ ZADANIE 3:
+ Zadanie trzecie opiera się na tym samym algorytmie. Tutaj rozwiazanie początkowe to spacer do lewej ściany, w dół, prawo, w górę, w lewo i w dół, aż napotkamy wyjście.
+ Sąsiadem rozwiązania jest inwersja dwóch elemtów, z uniuniętymi podciągami typu "LR", "UD" itp., czyli sekwencjami 2 ruchów, które nie zmieniają położenia.
+ Funkcja "fitnessu" przyjmuje wartość nieskończoność, jeśli nie udało się dotrzeć do końca i liczbę kroków, jeśli udało się dotrzeć do końca.
+ Algorytm znajduje optymalne rozwiazanie dla obu zestawów danych testowych.
